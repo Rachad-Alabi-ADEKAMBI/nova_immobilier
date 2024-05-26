@@ -17,6 +17,13 @@
                  <div class="nav-item dropdown">
                      <a href="properties.php" class="nav-link">Annonces</a>
                  </div>
+                        <?php if (!isset($_SESSION['user']) || !$_SESSION['user']) { ?>
+                            <a href="login.php" class="nav-item nav-link">Connexion</a>
+                        <?php } else { ?>
+                            <a href="dashboard.php" class="nav-item nav-link">Tableau de bord</a>
+                            <a href="logout.php" class="nav-item nav-link">Déconnexion</a>
+                        <?php } ?>
+
                  <a href="https://wa.me/22961069401?text=Bonjour...%20" class="nav-item nav-link">Contact</a>
              </div>
              <a href="https://wa.me/22961069401?text=Bonjour...%20" class="btn btn-primary px-3 d-none d-lg-flex">Déposer une annonce</a>

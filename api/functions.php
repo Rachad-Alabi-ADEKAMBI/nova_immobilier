@@ -197,6 +197,67 @@ function getProperty(){
         sendJSON($datas);
     }
 }
+
+function login()
+{
+    if (!empty($_POST)) {
+        $pdo = getConnexion();
+
+        $errors = [];
+
+        if (
+            isset($_POST['username'], $_POST['pass']) &&
+            !empty($_POST['username'] && !empty($_POST['pass']))
+        ) {
+            $sql = 'SELECT * FROM `users` WHERE `username` = ?';
+
+            $query = $pdo->prepare($sql);
+
+            $query->execute([verifyInput($_POST['username'])]);
+
+            $user = $query->fetch();
+
+            $pass = verifyInput($_POST['password']);
+
+            if (!$user) {
+                $errors['user'] = 'Veuillez vérifier les identifiants';
+            }
+
+            if ($user['pass'] != $pass) {
+                $errors['pass'] = 'Veuillez vérifier les identifiants';
+            }
+
+            if (!empty($errors)) {
+                $_SESSION['login'] = [
+                    'username' => verifyInput($_POST['username']),
+                ]; ?>
+
+                <script>
+               alert('Veuillez vérifier les identifiants');
+                window.location.replace('../login.php')
+                </script>
+                <?php
+                            }
+
+            if (empty($errors)) {
+                $_SESSION['user'] = [
+                    'username' => $user['username']
+                ];
+
+                header('Location: ../dashboard.php');
+            }
+        }
+    }
+}
+
+function logout()
+{
+    unset($_SESSION['user']);
+
+    header('Location: ../index.php');
+}
+
+
 function sendJSON($infos)
 {
     header('Access-Control-Allow-Origin: *');

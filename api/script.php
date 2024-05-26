@@ -22,3 +22,11 @@ if($action == 'search'){
 if($action == 'getProperty'){
     getProperty();
 }
+
+if($action == 'login'){
+    login();
+}
+
+if($action == 'logout'){
+    logout();
+}
