@@ -160,45 +160,39 @@
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
-    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' :key='detail.id'>
-        <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
-            <div class="position-relative overflow-hidden">
-                <a :href="'property.php?id=' + detail.id">
-                    <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
-                </a>
-                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                    {{ detail.action }}    
-                </div>
-                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
-                    {{ detail.category }}    
-                </div>
-            </div>
-            <div class="p-4 pb-0">
-                <h5 class="text-primary mb-3"> {{ detail.price }} F CFA </h5>
-                <a class="d-block h5 mb-2" :href="'property.php?id=' + detail.id"> {{ detail.description }} </a>
-                <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location }}</p>
-            </div>
-            <div class="d-flex border-top">
-                <small class="flex-fill text-center border-end py-2">
-                    <i class="fa fa-ruler-combined text-primary me-2"></i>
-                    {{ detail.people }} ménage{{ detail.people > 1 ? 's' : '' }}
-                </small>
-                <small class="flex-fill text-center border-end py-2">
-                    <i class="fa fa-bed text-primary me-2"></i>
-                    {{ detail.rooms }} chambre{{ detail.rooms > 1 ? 's' : '' }}
-                </small>
-                <small class="flex-fill text-center py-2">
-                    <i class="fa fa-bath text-primary me-2"></i>
-                    {{ detail.bathrooms }} douche{{ detail.bathrooms > 1 ? 's' : '' }}
-                </small>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-        <a class="btn btn-primary py-3 px-5" href="properties.php">Voir plus</a>
-    </div>
-</div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' 
+                                    :key='detail.id'>
+                                    <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
+                                        <div class="position-relative overflow-hidden">
+                                            <a href="">
+                                                <img class="img-fluid" :src="getImg(detail.pic1)" alt=""></a>
+                                            <div
+                                                class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                                {{ detail.action }}    
+                                            </div>
+                                            <div
+                                                class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                                {{ detail.category }}    
+                                            </div>
+                                        </div>
+                                        <div class="p-4 pb-0">
+                                            <h5 class="text-primary mb-3"> {{ detail.price }} F CFA </h5>
+                                            <a class="d-block h5 mb-2" href=""> {{ detail.description }} </a>
+                                            <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                                        </div>
+                                        <div class="d-flex border-top">
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{detail.rooms}} chambre{{detail.rooms > 1 ? 's' : ''}}</small>
+                                            <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}</small>
+                                        </div>
+
+                                    </div>
+                                </div>
+                        
+                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                            <a class="btn btn-primary py-3 px-5" href="properties.php">Voir plus</a>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -280,11 +274,8 @@
 
 
         <?php include 'parts/footer.php'; ?>
-    </div>
 
-    <?php include 'parts/includeJs.php'; ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script>
+        <script>
         new Vue({
             el: '#app',
             data: {
@@ -295,7 +286,7 @@
             methods: {
                 displayDetails(){
                     console.log(this.id);
-                    axios.get('api/script.php?action=threeAds')
+                    axios.get('api/script.php?action=availableDatas')
                         .then((response) => {
                             console.log(response.data);
                             this.details = response.data;
@@ -322,6 +313,11 @@
             }
         });
     </script>
+    </div>
+
+    <?php include 'parts/includeJs.php'; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+   
 </body>
 
 </html>
