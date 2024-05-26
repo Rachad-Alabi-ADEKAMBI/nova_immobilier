@@ -1,8 +1,19 @@
-<?php 
-    session_start();
-    
-    //$datas = get('api/')
+<?php
+session_start();
+
+function getDataFromAPI($url) {
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return json_decode($response, true);
+}
+
+$apiUrl = 'api/script.php?action=availableDatas';
+$datas = getDataFromAPI($apiUrl);
+var_dump($datas);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

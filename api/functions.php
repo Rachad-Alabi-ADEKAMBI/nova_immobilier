@@ -271,9 +271,11 @@ function threeAds(){
     $pdo = getConnexion();
     $req = $pdo->prepare("SELECT * FROM ads WHERE situation = 'Disponible' ORDER BY id DESC LIMIT 3");
     $req->execute();
-    $datas = $req->fetch();
+    $datas = $req->fetchAll();
     $req->closeCursor();
-    sendJSON($datas);
+ //   sendJSON($datas);
+   // return $datas;
+   // var_dump($datas);
 }
 
 
