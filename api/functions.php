@@ -140,7 +140,13 @@ function search() {
     $req->closeCursor();
     
     if (count($datas) == 0) {
-        echo '0 result';
+        ?>
+            <script>
+                alert("Aucun résultat pour cette recherche !!");
+                window.history.back(); // This will navigate back to the previous page
+            </script>
+        <?php
+
         exit();
     }
     
@@ -159,7 +165,9 @@ function search() {
             'rooms' => $data['rooms'],
             'bathrooms' => $data['bathrooms'],
             'people' => $data['people'],
-            'size' => $data['size']
+            'size' => $data['size'],
+            'location' => $data['location'],
+            'price' => $data['price']
         );
     }
 
@@ -167,21 +175,28 @@ function search() {
     session_start();
     $_SESSION['search_results'] = $results;
     
-    header("Location: results.php", true, 301);  
+    header("Location: ../results.php", true, 301);  
 
 }
-
 
 function getProperty(){
     $pdo = getConnexion();
-    
     $id = verifyInput($_GET['id']);
-    $req = $pdo->prepare("SELECT * FROM ads WHERE id = ?");
-    $datas = $req->fetchAll();
-    $req->closeCursor();
-    sendJSON($datas);
-}
 
+    if ($id == 0 || $id < 0) { ?>
+        <script>
+            alert('Une erreur est survenue, merci de vérifier cette url');
+        </script>
+        <?php
+        exit(); 
+    } else {
+        $req = $pdo->prepare('SELECT * FROM ads WHERE id = ?');
+        $req->execute(array($id));
+        $datas = $req->fetchAll();
+
+        sendJSON($datas);
+    }
+}
 function sendJSON($infos)
 {
     header('Access-Control-Allow-Origin: *');
