@@ -198,16 +198,101 @@ function getProperty(){
     }
 }
 
+function pause(){
+    $pdo = getConnexion();
+    $id = verifyInput($_GET['id']);
+
+    if ($id == 0 || $id < 0) { ?>
+        <script>
+            alert('Une erreur est survenue, merci de vérifier cette url');
+        </script>
+        <?php
+        exit(); 
+    } else {
+        $req = $pdo->prepare("UPDATE ads SET situation = 'Non disponible' WHERE id = ?");
+        $req->execute(array($id));
+        ?>
+            <script>
+                alert('Annonce mise en pause !!');
+                header('Location: ../dashboard.php');
+            </script>
+
+<?php 
+    }
+}
+
+function publish(){
+    $pdo = getConnexion();
+    $id = verifyInput($_GET['id']);
+
+    if ($id == 0 || $id < 0) { ?>
+        <script>
+            alert('Une erreur est survenue, merci de vérifier cette url');
+        </script>
+        <?php
+        exit(); 
+    } else {
+        $req = $pdo->prepare("UPDATE ads SET situation = 'Disponible' WHERE id = ?");
+        $req->execute(array($id));
+        ?>
+            <script>
+                alert('Annonce publiée !!');
+                header('Location: ../dashboard.php');
+            </script>
+
+<?php 
+    }
+}
+
+function delete(){
+    $pdo = getConnexion();
+    $id = verifyInput($_GET['id']);
+
+    if ($id == 0 || $id < 0) { ?>
+        <script>
+            alert('Une erreur est survenue, merci de vérifier cette url');
+        </script>
+        <?php
+        exit(); 
+    } else {
+        $req = $pdo->prepare("DELETE FROM ads WHERE id = ?");
+        $req->execute(array($id));
+        ?>
+            <script>
+                alert('Annonce supprimée !!');
+                header('Location: ../dashboard.php');
+            </script>
+
+<?php 
+    }
+}
+
+function threeAds(){
+    $pdo = getConnexion();
+    $req = $pdo->prepare("SELECT * FROM ads WHERE situation = 'Disponible' ORDER BY id DESC LIMIT 3");
+    $req->execute();
+    $datas = $req->fetch();
+    $req->closeCursor();
+    sendJSON($datas);
+}
+
+
+
+
+
+
 function login()
 {
+
     if (!empty($_POST)) {
         $pdo = getConnexion();
+        
 
         $errors = [];
 
         if (
-            isset($_POST['username'], $_POST['pass']) &&
-            !empty($_POST['username'] && !empty($_POST['pass']))
+            isset($_POST['username'], $_POST['password']) &&
+            !empty($_POST['username'] && !empty($_POST['password']))
         ) {
             $sql = 'SELECT * FROM `users` WHERE `username` = ?';
 
@@ -220,17 +305,19 @@ function login()
             $pass = verifyInput($_POST['password']);
 
             if (!$user) {
-                $errors['user'] = 'Veuillez vérifier les identifiants';
+                $errors['user'] = 'Veuillez vérifier les identifi';
             }
 
-            if ($user['pass'] != $pass) {
-                $errors['pass'] = 'Veuillez vérifier les identifiants';
+            if ($user['password'] != $pass) {
+                $errors['pass'] = 'Veuillez vérifier les identifiantssss';
             }
-
+            
+           
             if (!empty($errors)) {
                 $_SESSION['login'] = [
                     'username' => verifyInput($_POST['username']),
-                ]; ?>
+                ]; 
+                ?>
 
                 <script>
                alert('Veuillez vérifier les identifiants');

@@ -1,7 +1,5 @@
 <?php 
     session_start();
-    // var_dump($_SESSION['search_results']);
-    $datas = $_SESSION['search_results'];
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +42,7 @@
                                                     <?= htmlspecialchars($detail['category']) ?>
                                                 </div>
                                             </div>
-                                            <div class="p-4 pb-0">
-                                                <h5 class="text-primary mb-3"><?= htmlspecialchars(number_format($detail['price'], 0, '', ' ')) ?> F CFA</h5>
+                                                <div class="p-4 pb-0">
                                                 <a class="d-block h5 mb-2" href=""><?= htmlspecialchars($detail['description']) ?></a>
                                                 <p><i class="fa fa-map-marker-alt text-primary me-2"></i><?= htmlspecialchars($detail['location']) ?></p>
                                             </div>

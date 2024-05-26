@@ -251,10 +251,23 @@
                                             <td data-label="Image">
                                                 <img :src='getImgUrl(detail.pic1)' alt="">
                                             </td>
-                                            <td data-label="" v-if='detail.situation == "Occupé"'>
-                                                <button class="btn btn-sucsess" @click='validate(detail.id)' >
+                                            <td data-label="">
+                                                <button class="btn btn-success" v-if="detail.situation == 'Non disponible'" @click='publish(detail.id)' >
                                                     Publier
                                                 </button>
+                                                <button class="btn btn-info" v-if="detail.situation == 'Disponible'" @click='pause(detail.id)' >
+                                                    Non disponible
+                                                </button>
+
+                                                <button class="btn btn-danger"  @click='delete(detail.id)' >
+                                                    Supprimer
+                                                </button>
+
+                                                <a :href="'property.php?id=' + detail.id">
+                                                        <i class="fa fa-eye me-3"></i>
+                                                        </a>
+
+
                                             </td>
                                         </tr>
                                     </tbody>
@@ -324,10 +337,9 @@
                 getImgUrl(pic) {
                     return "img/" + pic;
                 },
-                getCard(){
-                    alert('We have received your query, please check your email');
-                    window.location.replace('dashboard.php');
-                },
+               pause(id){
+                    window.location.replace('api/script.php?action=pause&id='+id);
+               }
             }
         });
     </script>

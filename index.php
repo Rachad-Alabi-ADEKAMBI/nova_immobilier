@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    
+    //$datas = get('api/')
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +20,7 @@
         <?php include 'parts/header.php'; ?>
 
         <!-- Header Start -->
-        <div class="container-fluid header bg-white p-0">
+        <div class="container-fluid header bg-white p-0" id='app'>
             <div class="row g-0 align-items-center flex-column-reverse
              flex-md-row pt-5">
                 <div class="col-md-6 p-5 mt-lg-5    ">
@@ -54,7 +60,7 @@
                                 <div class="icon mb-3">
                                     <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
                                 </div>
-                                <h6>Apartements</h6>
+                                <h6>Appartements</h6>
                                 <span>+ 40 annonces</span>
                             </div>
                         </a>
@@ -78,8 +84,8 @@
                                 <div class="icon mb-3">
                                     <img class="img-fluid" src="img/icon-condominium.png" alt="Icon">
                                 </div>
-                                <h6>Boutiques</h6>
-                                <span>40 annonces</span>
+                                <h6>Terrains</h6>
+                                <span>15 annonces</span>
                             </div>
                         </a>
                     </div>
@@ -133,6 +139,7 @@
                                 autres dans la ville de Parakou</p>
                         </div>
                     </div>
+                    <!--
                     <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                         <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
                             <li class="nav-item me-2">
@@ -147,92 +154,51 @@
                             </li>
                         </ul>
                     </div>
+-->
                 </div>
+
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="row g-4">
-                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="property-item rounded overflow-hidden">
-                                    <div class="position-relative overflow-hidden">
-                                        <a href=""><img class="img-fluid" src="img/appart1.jpeg" alt=""></a>
-                                        <div
-                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                            A louer</div>
-                                        <div
-                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
-                                            Appartement</div>
-                                    </div>
-                                    <div class="p-4 pb-0">
-                                        <h5 class="text-primary mb-3">60.000 F </h5>
-                                        <a class="d-block h5 mb-2" href="">Nouvelle construction </a>
-                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>Yokossi 2</p>
-                                    </div>
-                                    <div class="d-flex border-top">
-                                        <small class="flex-fill text-center border-end py-2"><i
-                                                class="fa fa-ruler-combined text-primary me-2"></i>R1</small>
-                                        <small class="flex-fill text-center border-end py-2"><i
-                                                class="fa fa-bed text-primary me-2"></i>2 chambres</small>
-                                        <small class="flex-fill text-center py-2"><i
-                                                class="fa fa-bath text-primary me-2"></i>2 douches</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="property-item rounded overflow-hidden">
-                                    <div class="position-relative overflow-hidden">
-                                        <a href=""><img class="img-fluid" src="img/appart3.jpeg" alt=""></a>
-                                        <div
-                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                            A vendre</div>
-                                        <div
-                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
-                                            Maison</div>
-                                    </div>
-                                    <div class="p-4 pb-0">
-                                        <h5 class="text-primary mb-3">20.000.000 F</h5>
-                                        <a class="d-block h5 mb-2" href="">
-                                            Maison à vendre</a>
-                                        <p><i class="fa fa-map-marker-alt text-primary me-2">
-
-                                            </i>Gbira</p>
-                                    </div>
-                                    <div class="d-flex border-top">
-                                        <small class="flex-fill text-center border-end py-2"><i
-                                                class="fa fa-ruler-combined text-primary me-2"></i>R+1</small>
-                                        <small class="flex-fill text-center border-end py-2"><i
-                                                class="fa fa-bed text-primary me-2"></i>4 chambres</small>
-                                        <small class="flex-fill text-center py-2"><i
-                                                class="fa fa-bath text-primary me-2"></i>3 douches</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                                <div class="property-item rounded overflow-hidden">
-                                    <div class="position-relative overflow-hidden">
-                                        <a href=""><img class="img-fluid" src="img/terrain3.jpg" alt=""></a>
-                                        <div
-                                            class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                            A vendre</div>
-                                        <div
-                                            class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
-                                            Terrain</div>
-                                    </div>
-                                    <div class="p-4 pb-0">
-                                        <h5 class="text-primary mb-3">1.200.000 F</h5>
-                                        <a class="d-block h5 mb-2" href="">Parcelle agricole</a>
-                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>Tourou</p>
-                                    </div>
-                                    <div class="d-flex border-top">
-                                        <small class="flex-fill text-center border-end py-2"><i
-                                                class="fa fa-ruler-combined text-primary me-2"></i>1 ha</small>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <a class="btn btn-primary py-3 px-5" href="properties.php">Voir plus</a>
-                            </div>
-                        </div>
+                    <div class="row g-4">
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" v-for='detail in details' :key='detail.id'>
+        <div class="property-item rounded overflow-hidden" @click='goToProperty(detail.id)'>
+            <div class="position-relative overflow-hidden">
+                <a :href="'property.php?id=' + detail.id">
+                    <img class="img-fluid" :src="getImg(detail.pic1)" alt="">
+                </a>
+                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                    {{ detail.action }}    
+                </div>
+                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                    {{ detail.category }}    
+                </div>
+            </div>
+            <div class="p-4 pb-0">
+                <h5 class="text-primary mb-3"> {{ detail.price }} F CFA </h5>
+                <a class="d-block h5 mb-2" :href="'property.php?id=' + detail.id"> {{ detail.description }} </a>
+                <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location }}</p>
+            </div>
+            <div class="d-flex border-top">
+                <small class="flex-fill text-center border-end py-2">
+                    <i class="fa fa-ruler-combined text-primary me-2"></i>
+                    {{ detail.people }} ménage{{ detail.people > 1 ? 's' : '' }}
+                </small>
+                <small class="flex-fill text-center border-end py-2">
+                    <i class="fa fa-bed text-primary me-2"></i>
+                    {{ detail.rooms }} chambre{{ detail.rooms > 1 ? 's' : '' }}
+                </small>
+                <small class="flex-fill text-center py-2">
+                    <i class="fa fa-bath text-primary me-2"></i>
+                    {{ detail.bathrooms }} douche{{ detail.bathrooms > 1 ? 's' : '' }}
+                </small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+        <a class="btn btn-primary py-3 px-5" href="properties.php">Voir plus</a>
+    </div>
+</div>
                     </div>
                 </div>
             </div>
@@ -309,59 +275,7 @@
 
 
         <!-- Testimonial Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Que disent nos clients ?</h1>
-                    <p>Vous aussi rejoignez la longue liste de nos clients satisfaits dès aujourd'hui</p>
-                </div>
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Merci vraiment à toute l'équipe de Nova Immo, je pensais que cela prendrait plus de
-                                temps, je
-                                suis vraiment satisfait</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0
-                                 rounded" src="img/testimonial-1.jpg" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Marie</h6>
-                                    <small>Commercante</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Service de qualité, désormais toutes mes
-                                opérations d'achat de parcelles seront gérées
-                                par votre agence</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="img/user4.jpg"
-                                    style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Benjamin</h6>
-                                    <small>Particulier</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>J'aime beaucoup votre implication, je reviendrai certainement</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="img/user3.jpeg"
-                                    style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Paul</h6>
-                                    <small>Médécin</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php include 'parts/testimonial.php'; ?>
         <!-- Testimonial End -->
 
 
@@ -369,6 +283,45 @@
     </div>
 
     <?php include 'parts/includeJs.php'; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                details: []           },
+            mounted(){
+                this.displayDetails();
+            },
+            methods: {
+                displayDetails(){
+                    console.log(this.id);
+                    axios.get('api/script.php?action=threeAds')
+                        .then((response) => {
+                            console.log(response.data);
+                            this.details = response.data;
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            alert('Failed to fetch data');
+                        });
+                }, 
+                format(num){
+                    return new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
+                },
+                formatDate(da) {
+                    const [datePart, timePart] = da.split(' ');
+                    const [year, month, day] = datePart.split('-');
+                    return `${day}-${month}-${year}`;
+                },
+                getImgUrl(pic) {
+                    return "img/" + pic;
+                },
+                goToProperty(id){
+                        window.location.replace('property.php?id='+id);
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -23,6 +23,27 @@ if($action == 'getProperty'){
     getProperty();
 }
 
+if($action == 'pause'){
+    pause();
+}
+
+if($action == 'publish'){
+    publish();
+}
+
+if($action == 'pause'){
+    delete();
+}
+
+if($action == 'threeAds'){
+    threeAds();
+}
+
+
+
+
+
+
 if($action == 'login'){
     login();
 }

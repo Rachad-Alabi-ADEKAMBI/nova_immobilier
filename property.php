@@ -72,7 +72,11 @@ session_start();
                     
                     <div class="col-12">
 
-                    <h5 class="text-primary mb-3">{{ format(detail.date) }} F CFA</h5>
+                    <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ detail.location}}</p>
+                                        
+                                        <div class="d-flex border-top">
+
+                    <h5 class="text-primary mt-3 mb-2">{{ format(detail.price) }} F CFA</h5>
                     </div>
                 </div>
 
@@ -96,7 +100,7 @@ session_start();
 
                         </p>
                         </div>
-                    </div>
+                    </div></div>
                 </div>
             </div>
         </div>

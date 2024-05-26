@@ -35,9 +35,10 @@
 
                                     <div class="col-sm-12">
                                         <div class="form-floating">
-                                        <input type="password" class="form-control" required name='price' id="price" placeholder="Mot de passe">
+                                        <input type="password" class="form-control" required name='password' id="" 
+                                        placeholder="">
 
-                                            <label for="password"></label>
+                                            <label for="password">Mot de passe</label>
                                         </div>
                                     </div>
                                 </div>
