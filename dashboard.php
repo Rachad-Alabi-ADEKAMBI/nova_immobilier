@@ -37,13 +37,13 @@
                                             </button>
 
                                             <button class="btn btn-primary m-2" @click='displayAll()'>
-                                                Mes annonces
+                                                Mes annonces 
                                             </button>
                                 </div>
                     </div>
 
                     <!--new add-->
-                    <div class="col-sm-12 col-md-8 mt-4 mx-auto" v-if='showNew'>
+                    <div class="col-sm-11 col-md-8 mt-4 mx-auto" v-if='showNew'>
                         <div class="bg-white border mt-2 rounded p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
                             <form action="api/script.php?action=newAd" method="POST" enctype='multipart/form-data'>
                                 <h1 class="mx-auto text-center">Nouvelle annonce</h1>
@@ -91,7 +91,7 @@
 
                                     <div class="col-sm-4 col-md-4">
                                         <div class="form-floating">
-                                            <select class="custom-select" name="Location" required>
+                                            <select class="custom-select" name="location" required>
                                                 <option value=''>Quartier</option>
                                                 <option value="Arafat">Arafat</option>
                                                 <option value="Albarika">Albarika</option>
@@ -227,9 +227,9 @@
                     <!--new add-->
 
                     <!-- list--> 
-                    <div class='col-sm-12 col-md-8 mt-4 mx-auto data-wow-delay="0.5s"' v-if='showAll' >
+                    <div class='col-sm-12 p-sm-2 m-2 col-md-8 mt-4 mx-auto data-wow-delay="0.5s"' v-if='showAll' >
                          <h1 class="mx-auto text-center">
-                            Toutes les annonces
+                            Toutes les annonces ( {{ details.length  }} )
                          </h1>
                         <div class="mt-2table-container">
                                 <table>
@@ -246,20 +246,20 @@
                                         <tr v-for='detail in details' :key='detail.id'>
                                             <td data-label="Date"> {{ formatDate(detail.date_of_insertion) }} </td>
                                             <td data-label="Nom">{{ detail.name }}</td>
-                                            <td data-label="Qartier">{{ detail.location }} </td>
+                                            <td data-label="Quartier">{{ detail.location }} </td>
                                             <td data-label="Prix"> {{ format(detail.price) }} </td>
                                             <td data-label="Image">
                                                 <img :src='getImgUrl(detail.pic1)' alt="">
                                             </td>
                                             <td data-label="">
-                                                <button class="btn btn-success" v-if="detail.situation == 'Non disponible'" @click='publish(detail.id)' >
-                                                    Publier
+                                                <button class="btn btn-success m-1" v-if="detail.situation == 'Non disponible'" @click='publish(detail.id)' >
+                                                    Disponible
                                                 </button>
-                                                <button class="btn btn-info" v-if="detail.situation == 'Disponible'" @click='pause(detail.id)' >
+                                                <button class="btn btn-info m-1" v-if="detail.situation == 'Disponible'" @click='pause(detail.id)' >
                                                     Non disponible
                                                 </button>
 
-                                                <button class="btn btn-danger"  @click='delete(detail.id)' >
+                                                <button class="btn btn-danger m-1"  @click='remove(detail.id)' >
                                                     Supprimer
                                                 </button>
 
@@ -339,6 +339,12 @@
                 },
                pause(id){
                     window.location.replace('api/script.php?action=pause&id='+id);
+               },
+               publish(id){
+                window.location.replace('api/script.php?action=publish&id='+id);
+               },
+               remove(id){
+                window.location.replace('api/script.php?action=delete&id='+id);
                }
             }
         });

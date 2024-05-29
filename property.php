@@ -55,7 +55,7 @@ session_start();
 
                 <div class="row">
                     <div class="col-12">
-                        <div class="icon">
+                        <div class="icon"  v-if="detail.category != 'Terrain'">
                             <div class="d-flex border-top">
                                 <small class="flex-fill text-center border-end py-2">
                                     <i class="fa fa-ruler-combined text-primary me-2"></i>{{detail.people}} ménage{{detail.people > 1 ? 's' : ''}}
@@ -67,6 +67,10 @@ session_start();
                                     <i class="fa fa-bath text-primary me-2"></i>{{detail.bathrooms}} douche{{detail.bathrooms > 1 ? 's' : ''}}
                                 </small>
                             </div>
+                        </div>
+
+                        <div class="icon" v-if="detail.category != 'Terrain'">
+                          {{ format(detail.size) }} m2
                         </div>
                     </div>
                     
@@ -90,11 +94,11 @@ session_start();
                     <div class="col-sm-12 col-md-8 mx-auto text-center">
                         <p>
                             Partager: <br>
-                                <a href="https://wa.me/?text=bitly.com/property.php?id=<?=$_GET['id']?>)">
+                                <a href="https://wa.me/?text=https://nova-immobilier.000webhostapp.com//property.php?id=<?=$_GET['id']?>)">
                                 <i class="fab fa-whatsapp"></i>
                                 </a>
 
-                                <a href="https://www.facebook.com/share.php?u=property.php?id=<?=$_GET['id']?>" target="_blank">
+                                <a href="https://www.facebook.com/share.php?u=https://nova-immobilier.000webhostapp.com//property.php?id=<?=$_GET['id']?>" target="_blank">
                                 <i class="fab fa-facebook"></i>
                                 </a>
 

@@ -31,7 +31,7 @@ if($action == 'publish'){
     publish();
 }
 
-if($action == 'pause'){
+if($action == 'delete'){
     delete();
 }
 

@@ -6,17 +6,15 @@ function getConnexion()
 {
     try {
         return new PDO(
-            'mysql:host=localhost;dbname=rapid_link;charset=UTF8',
-            'id22185176_rapid_link',
-            'Rapid_link0'
+            'mysql:host=localhost;dbname=id22223858_nova_immo;charset=UTF8',
+            'id22223858_nova_immo',
+            'Novaimmo2024?'
         );
     } catch (PDOException $e) {
         // Handle database connection error
         die("Connection failed: " . $e->getMessage());
     }
 }
-
-
 */
 
 function getConnexion()
@@ -33,16 +31,16 @@ function getConnexion()
     }
 }
 
+
 function newAd(){
     $pdo = getConnexion();
-    $job = verifyInput($_POST['job']);
-
     $name = verifyInput($_POST['name']);
     $price = verifyInput($_POST['price']);
     $category = verifyInput($_POST['category']);
     $action = verifyInput($_POST['action']);
     $location = verifyInput($_POST['location']);
     $description = verifyInput($_POST['description']);
+    $situation = 'Disponible';
 
     if($category == 'Terrain'){
         $size = verifyInput($_POST['size']);
@@ -50,7 +48,7 @@ function newAd(){
         $bathrooms = 0;
         $people = 0;
     } else{
-        $size = '';
+        $size = 0;
         $rooms = verifyInput($_POST['rooms']);
         $bathrooms = verifyInput($_POST['bathrooms']);
         $people = verifyInput($_POST['people']);
@@ -92,8 +90,8 @@ function newAd(){
       ?>
      
       <script>
-     //     alert('Annonce ajoutée avec succès !!');
-      //    window.location.replace('../dashboard.php')
+          alert('Annonce ajoutée avec succès !!');
+          window.location.replace('../dashboard.php')
       </script>
     <?php
 
@@ -117,20 +115,17 @@ function getAvailableDatas(){
     sendJSON($datas);
 }
 
+
 function search() {
     $pdo = getConnexion();
 
-    // Sanitize and retrieve POST variables
     $action = verifyInput($_POST['action']);
     $category = verifyInput($_POST['category']);
     $location = verifyInput($_POST['location']);
 
- //   echo $location;
-
-     // Prepare the SQL query with action and location filters
     $req = $pdo->prepare("SELECT * FROM ads WHERE action = ?
      AND location = ? 
-     and category = ?
+     AND category = ?
      AND situation = 'Disponible'
      ORDER BY id DESC");
     $req->execute([$action, $location, $category]);
@@ -148,9 +143,7 @@ function search() {
         <?php
 
         exit();
-    }
-    
-    
+    } else{
 
     // Initialize an empty results array
     $results = [];
@@ -167,7 +160,8 @@ function search() {
             'people' => $data['people'],
             'size' => $data['size'],
             'location' => $data['location'],
-            'price' => $data['price']
+            'price' => $data['price'],
+            'action' => $data['action']
         );
     }
 
@@ -175,9 +169,16 @@ function search() {
     session_start();
     $_SESSION['search_results'] = $results;
     
-    header("Location: ../results.php", true, 301);  
+    ?>
+        <script>
+            window.location.replace('../results.php')
+        </script>
+    <?php
+    }
+    
 
 }
+
 
 function getProperty(){
     $pdo = getConnexion();
@@ -214,7 +215,7 @@ function pause(){
         ?>
             <script>
                 alert('Annonce mise en pause !!');
-                header('Location: ../dashboard.php');
+                window.location.replace('../dashboard.php');
             </script>
 
 <?php 
@@ -237,7 +238,7 @@ function publish(){
         ?>
             <script>
                 alert('Annonce publiée !!');
-                header('Location: ../dashboard.php');
+                window.location.replace('../dashboard.php');
             </script>
 
 <?php 
@@ -260,7 +261,7 @@ function delete(){
         ?>
             <script>
                 alert('Annonce supprimée !!');
-                header('Location: ../dashboard.php');
+                window.location.replace('../dashboard.php');
             </script>
 
 <?php 
@@ -273,7 +274,7 @@ function threeAds(){
     $req->execute();
     $datas = $req->fetchAll();
     $req->closeCursor();
- //   sendJSON($datas);
+    sendJSON($datas);
    // return $datas;
    // var_dump($datas);
 }
