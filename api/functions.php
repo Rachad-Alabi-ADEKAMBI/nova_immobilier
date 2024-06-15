@@ -90,8 +90,8 @@ function newAd(){
       ?>
      
       <script>
-          alert('Annonce ajoutée avec succès !!');
-          window.location.replace('../dashboard.php')
+      //    alert('Annonce ajoutée avec succès !!');
+        //  window.location.replace('../dashboard.php')
       </script>
     <?php
 
@@ -166,7 +166,7 @@ function search() {
     }
 
     // Start session and store results
-    session_start();
+   // session_start();
     $_SESSION['search_results'] = $results;
     
     ?>

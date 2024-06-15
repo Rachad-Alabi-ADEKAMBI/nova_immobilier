@@ -13,53 +13,54 @@
 </head>
 
 <body>
+<?php include 'parts/spinner.php'; ?>
+
+<?php include 'parts/header.php'; ?>
     <div class="container-xxl bg-white p-0">
-        <?php include 'parts/spinner.php'; ?>
+            <div id="app">
+                <div class="row g-0 gx-5 align-items-end">
+                            <div class="col-sm-12 col-md-6 mt-4 mx-auto" v-if='showNew'>
+                                <div class="bg-white border mt-2 rounded p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
+                                    <form action="api/script.php?action=login" method="POST" >
+                                        <h1 class="mx-auto text-center">Connexion</h1>
 
-        <?php include 'parts/header.php'; ?>
+                                        <div class="row g-3">
+                                            <div class="col-sm-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" required name='username' placeholder="">
+                                                    <label for="name">Identifiant</label>
+                                                </div>
+                                            </div>
 
-        <div id="app">
-        <div class="row g-0 gx-5 align-items-end">
-                    <div class="col-sm-12 col-md-6 mt-4 mx-auto" v-if='showNew'>
-                        <div class="bg-white border mt-2 rounded p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
-                            <form action="api/script.php?action=login" method="POST" >
-                                <h1 class="mx-auto text-center">Connexion</h1>
+                                            <div class="col-sm-12">
+                                                <div class="form-floating">
+                                                <input type="password" class="form-control" required name='password' id="" 
+                                                placeholder="">
 
-                                <div class="row g-3">
-                                    <div class="col-sm-12">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" required name='username' placeholder="">
-                                            <label for="name">Identifiant</label>
+                                                    <label for="password">Mot de passe</label>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-sm-12">
-                                        <div class="form-floating">
-                                        <input type="password" class="form-control" required name='password' id="" 
-                                        placeholder="">
-
-                                            <label for="password">Mot de passe</label>
+                                        <div class="row g-3 mt-4">
+                                            <div class="col-sm-12 col-md-4 mx-auto text-center">
+                                                <button class="btn btn-success w-100 py-3" type="submit">
+                                                    Connexion
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
-
-                                <div class="row g-3 mt-4">
-                                    <div class="col-sm-12 col-md-4 mx-auto text-center">
-                                        <button class="btn btn-success w-100 py-3" type="submit">
-                                            Connexion
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
+                        
                         </div>
-                    </div>
-                   
                 </div>
-        </div>
+            </div>
+    </div>
 
         <?php include 'parts/footer.php'; ?>
 
-    </div>
+    
 
     <?php include 'parts/includeJs.php'; ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>

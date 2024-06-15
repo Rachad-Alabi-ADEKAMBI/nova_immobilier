@@ -69,7 +69,7 @@ session_start();
                             </div>
                         </div>
 
-                        <div class="icon" v-if="detail.category != 'Terrain'">
+                        <div class="icon" v-if="detail.category == 'Terrain'">
                           {{ format(detail.size) }} m2
                         </div>
                     </div>
@@ -94,7 +94,7 @@ session_start();
                     <div class="col-sm-12 col-md-8 mx-auto text-center">
                         <p>
                             Partager: <br>
-                                <a href="https://wa.me/?text=https://nova-immobilier.000webhostapp.com//property.php?id=<?=$_GET['id']?>)">
+                                <a href="https://wa.me/?text=https://nova-immobilier.000webhostapp.com//property.php?id=<?=$_GET['id']?>">
                                 <i class="fab fa-whatsapp"></i>
                                 </a>
 

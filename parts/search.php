@@ -14,9 +14,11 @@
                     <div class="col-md-4">
                         <select class="form-select border-0 py-3" name='category'>
                             <option >Type de bien</option>
-                            <option value="Appartement">Appartement</option>
-                            <option value="Maison">Maison</option>
-                            <option value="Terrain">Terrain</option>
+                                                                <option value="Appartement">Appartement</option>
+                                                                <option value="Chambre-salon">Chambre-salon</option>
+                                                                <option value="Entrée-coucher">Entrée-coucher</option>
+                                                                <option value="Maison">Maison</option>
+                                                                <option value="Terrain">Terrain</option>
                         </select>
                     </div>
 
@@ -29,7 +31,7 @@
                     </div>
                  
                     <div class="col-md-4">
-                    <select class="form-select border-0 py-3"  name="location" required>
+                        <select class="form-select border-0 py-3"  name="location" required>
                                                 <option value=''>Quartier</option>
                                                 <option value="Amanwignon">Amanwignon</option>
                                                 <option value="Arafat">Arafat</option>
@@ -38,7 +40,7 @@
                                                  <option value="Bah-mora">Bah-mora</option>
                                                 <option value="Baka">Baka</option>
                                                  <option value="Bawé">Bawé</option>
-                                                <option value="dépot">Dépôt</option>
+                                                <option value="Dépôt">Dépôt</option>
                                                 <option value="Ganou">Ganou</option>
                                                 <option value="Guema">Guema</option>
                                                 <option value="Gbira">Gbira</option>
@@ -57,7 +59,7 @@
                                                 <option value="Yokossi 2">Yokossi 2</option>
                                                 <option value="Zongo 1">Zongo 1</option>
                                                 <option value="Zongo 2">Zongo 2</option>
-                                            </select>
+                        </select>
                     </div>
                 </div>
             </div>
